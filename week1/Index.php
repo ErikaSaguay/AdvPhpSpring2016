@@ -2,6 +2,20 @@
 <html>
     <head>
         <title>Assignment1</title>
+        <style>
+         table {
+            border-collapse: collapse;
+            width: 100%;
+         }
+
+         th, td {
+            text-align: left;
+            padding: 8px;
+         }
+
+        tr:nth-child(even){background-color: #f2f2f2}   
+            
+        </style>
     </head>
     <body>
      <body>
@@ -23,10 +37,11 @@
        } // whatever expetion we throw it will get so far it does nothing
         $db;
         $sql = "SELECT * FROM address";
-        $results =$db->query($sql);
-        foreach($results as $result){
+        $results =$db->query($sql); 
             echo"<table>";
             echo"<tr><th>Name</th><th>Email</th><th>Address</th><th>City</th><th>State</th><th>Zip</th><th>DOB</th></tr>";
+        foreach($results as $result){
+           
             echo "<tr>";
             echo "<td>" . $result['fullname'] . "</td>";
             echo "<td>" . $result['email'] . "</td>";
@@ -36,8 +51,9 @@
             echo "<td>" . $result['zip'] . "</td>";
             echo "<td>" . $result['birthday'] . "</td>";
             echo "</tr>";
-            echo"</table>";
+            
         }
+        echo"</table>";
     ?>
         
     </body>
