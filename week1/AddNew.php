@@ -2,6 +2,14 @@
     <html>
     <head>
     <title>Assignment1Add</title>
+    <style>
+      #myform{background-color:rgb(176,224,230);}
+      .textboxes{position: relative; left:45%;}
+      p{position:relative; left:45%;}
+      .error{position:relative; left:45%;}
+      #link{position:relative; left:45%;}
+      #button{position:relative; left:45%;}
+    </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     </head>
     <body>
@@ -106,24 +114,24 @@
        ?>
 
 
-        <a href="http://localhost/AdvPhpSpring2016/week1/Index.php">Return</a>
+        <a id="link" href="http://localhost/AdvPhpSpring2016/week1/Index.php">Return</a>
         <p><span class="error">* required field.</span></p>
         <form id="myform" action="InsertData.php" method="post">
         <p>Full Name</p>
-        <input id="fullname" name="fullname" type="text" value="<?php echo $fullname; ?>">
+        <input class="textboxes" name="fullname" type="text" value="<?php echo $fullname; ?>">
         <span class="error">* <?php echo $fullnameErr;?></span>
         <p>Email</p>
-        <input name="email" type="text" value="<?php echo $email;?>">
+        <input class="textboxes" name="email" type="text" value="<?php echo $email;?>">
         <span class="error">* <?php echo $emailErr;?></span>
         <span class="error">* <?php echo $emailRegexErr;?></span>
         <p>Address</p>
-        <input name="address" type="text" value="<?php echo $address;?>" >
+        <input class="textboxes" name="address" type="text" value="<?php echo $address;?>" >
         <span class="error">* <?php echo $addressErr;?></span>
         <p>City</p>
-        <input name="city" type="text" value="<?php echo $city;?>" >
+        <input class="textboxes" name="city" type="text" value="<?php echo $city;?>" >
         <span class="error">* <?php echo $cityErr;?></span>
         <p>State</p>
-        <select  name="state" >
+        <select class="textboxes" name="state" >
         <option  value="Choose One">Choose One</option>
         <option  value="AL">Alabama</option>
 	<option  value="AK">Alaska</option>
@@ -179,14 +187,14 @@
         </select>
         <span class="error">* <?php echo $stateErr;?></span>	
         <p>Zip</p>
-        <input name="zip" type="text" value="<?php echo $zip;?>">
+        <input class="textboxes" name="zip" type="text" value="<?php echo $zip;?>">
         <span class="error">* <?php echo $zipErr;?></span>
         <span class="error">* <?php echo $zipRegexErr;?></span>
         <p>BirthDay</p>
-        <input name="dob" type="date" value="<?php echo $dob;?>">
+        <input class="textboxes" name="dob" type="date" value="<?php echo $dob;?>">
         <span class="error">* <?php echo $dobErr;?></span>
         <br><br>
-        <input type="submit" name='submit' value="submit" >
+        <input id="button"  type="submit" name='submit' value="submit" >
         </script>
         </form>
 
