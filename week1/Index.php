@@ -5,7 +5,7 @@
     </head>
     <body>
      <body>
-         <a href="http://localhost/AdvPhpSpring2016/week1/Assignment1/AddNew.php">Add New User</a>
+         <a href="http://localhost/AdvPhpSpring2016/week1/AddNew.php">Add New User</a>
          <h1>Results</h1>
              
     <?php

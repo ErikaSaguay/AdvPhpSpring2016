@@ -4,10 +4,11 @@
     <title>Assignment1Add</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     </head>
-    <body><?php 
+    <body>
+    <?php 
     //regex
-    $emailregex = '/^(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){255,})(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){65,}@)(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22))(?:\\.(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-+[a-z0-9]+)*\\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-+[a-z0-9]+)*)|(?:\\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\\]))$/iD';
-     $zipregex="/^[0-9]{5}([- ]?[0-9]{4})?$/";
+    $emailregex = '/^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$/';
+    $zipregex="/^[0-9]{5}([- ]?[0-9]{4})?$/";
      //clear information
     $fullname=$email=$address=$city=$state=$zip=$dob=$comment=$fullnameErr=$emailErr=$addressErr=$cityErr=$stateErr=
     $zipErr=$dobErr=$emailRegexErr=$zipRegexErr=$emailtest=$ziptest=$fullnametest=$citytest="";       
@@ -63,26 +64,27 @@
         }
        //dob
         if (empty($_POST["dob"])) {
-         $dobErr = "Date of birth required";
+        $dobErr = "Date of birth required";
        } else {
          $dob = test_input($_POST["dob"]);
        }
-    }
-    
-    function test_input($data) {
-        $data = trim($data);//trims data from any whitespace 
-        $data = stripslashes($data);//strips slashes
-        $data = htmlspecialchars($data);//strips special characters
-        return $data;
+       }
+
+        function test_input($data) {
+            $data = trim($data);//trims data from any whitespace 
+            $data = stripslashes($data);//strips slashes
+            $data = htmlspecialchars($data);//strips special characters
+            return $data;
+
+        }
+
+
+        ?>
+        <?php
+          
+
+       function addperson($fullname,$email,$address,$city,$state,$zip,$dob){
         
-    }
-  
-
-    ?>
-
-     <?php
-     //connecting to the database and seding the information
-       function addperson($fullname,$email,$address,$city,$state,$zip,$dob){ 
         $dsn = 'mysql:host=localhost;dbname=phpadvclassspring2016';
         $user='advphp';
         $pass='php';
@@ -102,26 +104,28 @@
          
        }
        ?>
-        <a href="http://localhost/AdvPhpSpring2016/week1/Assignment1/Index.php">Return</a>
+
+
+        <a href="http://localhost/AdvPhpSpring2016/week1/Index.php">Return</a>
         <p><span class="error">* required field.</span></p>
-        <form id="myform" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+        <form id="myform" action="InsertData.php" method="post">
         <p>Full Name</p>
-        <input id="fullname" name="fullname" type="text">
+        <input id="fullname" name="fullname" type="text" value="<?php echo $fullname; ?>">
         <span class="error">* <?php echo $fullnameErr;?></span>
         <p>Email</p>
-        <input name="email" type="text" >
+        <input name="email" type="text" value="<?php echo $email;?>">
         <span class="error">* <?php echo $emailErr;?></span>
         <span class="error">* <?php echo $emailRegexErr;?></span>
         <p>Address</p>
-        <input name="address" type="text" >
+        <input name="address" type="text" value="<?php echo $address;?>" >
         <span class="error">* <?php echo $addressErr;?></span>
         <p>City</p>
-        <input name="city" type="text" >
+        <input name="city" type="text" value="<?php echo $city;?>" >
         <span class="error">* <?php echo $cityErr;?></span>
         <p>State</p>
-        <select id="state" name="state">
+        <select  name="state" >
         <option  value="Choose One">Choose One</option>
-	<option  value="AL">Alabama</option>
+        <option  value="AL">Alabama</option>
 	<option  value="AK">Alaska</option>
 	<option  value="AZ">Arizona</option>
 	<option  value="AR">Arkansas</option>
@@ -175,16 +179,15 @@
         </select>
         <span class="error">* <?php echo $stateErr;?></span>	
         <p>Zip</p>
-        <input name="zip" type="text" >
+        <input name="zip" type="text" value="<?php echo $zip;?>">
         <span class="error">* <?php echo $zipErr;?></span>
         <span class="error">* <?php echo $zipRegexErr;?></span>
         <p>BirthDay</p>
-        <input name="dob" type="date" >
+        <input name="dob" type="date" value="<?php echo $dob;?>">
         <span class="error">* <?php echo $dobErr;?></span>
         <br><br>
-        <input type="submit" name='submit' value="submit" onclick="<?php addperson($fullname, $email, $address, $city, $state, $zip, $dob) ?>"  >
-        
-       
+        <input type="submit" name='submit' value="submit" >
+        </script>
         </form>
         <?php 
 
@@ -201,8 +204,6 @@
         echo "<br>";
         echo $dob;
         echo "<br>";
-
-
 
         //addperson($fullname, $email, $address, $city, $state, $zip, $dob);
         ?>
