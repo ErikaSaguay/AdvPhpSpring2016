@@ -189,23 +189,6 @@
         <input type="submit" name='submit' value="submit" >
         </script>
         </form>
-        <?php 
 
-        echo "<h2>Your Information:</h2>";
-        echo $fullname;
-        echo "<br>";
-        echo $email;
-        echo "<br>";
-        echo $city;
-        echo "<br>";
-        echo $state;
-        echo "<br>";
-        echo $zip;
-        echo "<br>";
-        echo $dob;
-        echo "<br>";
-
-        //addperson($fullname, $email, $address, $city, $state, $zip, $dob);
-        ?>
     </body>
     </html>
