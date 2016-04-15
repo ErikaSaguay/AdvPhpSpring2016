@@ -3,8 +3,8 @@
        function addperson($fullname,$email,$address,$city,$state,$zip,$dob){
 
         $dsn = 'mysql:host=localhost;dbname=phpadvclassspring2016';
-        $user='advphp';
-        $pass='php';
+        $user='root';
+        $pass='';
      
        try{
         $conn=new PDO($dsn,$user,$pass); // creating new php data object

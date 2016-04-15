@@ -24,8 +24,8 @@
              
     <?php
         $dsn = 'mysql:host=localhost;dbname=phpadvclassspring2016';
-        $user='advphp';
-        $pass='php';
+        $user='root';
+        $pass='';
      
        try{
            $db=new PDO($dsn,$user,$pass); // creating new php data object
