@@ -6,8 +6,8 @@
     </head>
     <body>
         <?php
-        $emailErr=$passErr="";
-        $emailregex = '/^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$/';
+        include './autoload.php';
+        
         if(isset($_POST['submit'])){
             $email=$pass="";
             $dsn = 'mysql:host=localhost;dbname=phpadvclassspring2016';
