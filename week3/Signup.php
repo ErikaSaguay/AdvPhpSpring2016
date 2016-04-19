@@ -7,8 +7,11 @@
     <body>
         <?php
         include './autoload.php';
+         $util = new Util();
+         $log = new Functions();
+         $values = filter_input_array(INPUT_POST);
         
-        if(isset($_POST['submit'])){
+        if($util->setRequest){
             $email=$pass="";
             $dsn = 'mysql:host=localhost;dbname=phpadvclassspring2016';
             $user='advphp';
