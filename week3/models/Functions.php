@@ -20,39 +20,40 @@ class Functions extends DBase implements IFunctions1 {
         $this->setUser('root');
         
     }
-    function create($values){
+    function create($values, $hash , $created){
         $db = $this->getDb();
         $statement = $db->prepare("INSERT INTO users SET email = :email, password = :password, created = :created");
         $binds = array(
             ":email" => $values['email'],
-            ":password" => $values['password'],
-            ":created" => $values['created']
+            ":password" => $hash,
+            ":created" => $created
 
         );
-        if ($statetment->execute($binds) && $statement->rowCount() > 0) {
+        if ($statement->execute($binds) && $statement->rowCount() > 0) {
             return true;
         }
 
         return false;
     }
-    function check($values){
+    function check($values, $pass){
         
         $db = $this->getDb();
         // password hash
-        $query = $db->prepare("SELECT * FROM users WHERE email = :email AND password = :password");
+        $query = $db->prepare("SELECT * FROM users WHERE email = :email ");
         $binds = array(
-            ":email" => $values['email'],
-            ":password"=> $values['password']
-                
+            ":email" => $values['email'],     
         );
-        if($query->execute($binds) && $query->rowCount() > 0 ){
+        $query->execute($binds);
+        $user =$query->fetch(PDO::FETCH_ASSOC);
+      
+        if(password_verify($pass, $user['password'] )){
             return true;
         }
         return false; 
     }
     function unique($values){
         $db = $this->getDb();
-        $query = $DB->prepare("SELECT * FROM users WHERE email = :email ");
+        $query = $db->prepare("SELECT * FROM users WHERE email = :email ");
         $binds = array(
             ":email" => $values['email']
         );

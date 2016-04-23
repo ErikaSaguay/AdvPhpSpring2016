@@ -7,7 +7,9 @@
     <body>
         <?php     
          session_start();
-         $email=$_SESSION['email'];     
+         $email=$_SESSION['email']; 
+         include './autoload.php' ; 
+         $util = new Util();
          echo'welcome :'. $email.'<br>';
          echo'<a href="http://localhost/AdvPhpSpring2016/week3/Signout.php">Signout</a>';
          ?>
