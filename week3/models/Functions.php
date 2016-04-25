@@ -35,19 +35,23 @@ class Functions extends DBase implements IFunctions1 {
 
         return false;
     }
-    function check($values, $pass){
+    function check($email, $pass){
         
         $db = $this->getDb();
         // password hash
-        $query = $db->prepare("SELECT * FROM users WHERE email = :email ");
+        $query = $db->prepare("SELECT password FROM users WHERE email = :email ");
         $binds = array(
-            ":email" => $values['email'],     
+            ":email" => $email   
         );
-        $query->execute($binds);
-        $user =$query->fetch(PDO::FETCH_ASSOC);
-      
-        if(password_verify($pass, $user['password'] )){
-            return true;
+
+        
+        if($query->execute($binds) && $query->rowCount() > 0 ){
+            $user = $query->fetch(PDO::FETCH_ASSOC);
+            $users = $user['password'];
+            
+            return password_verify($pass, $users );
+
+            
         }
         return false; 
     }

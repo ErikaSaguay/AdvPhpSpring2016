@@ -55,7 +55,7 @@
         
         ?>
         <h3>Sign Up</h3>
-        <form actio="#" method="post">
+        <form action="#" method="post">
             <?php if( isset($error['pass']) ): ?>
             <span><?php echo $error['pass']; ?></span>
             <?php endif; ?>
@@ -71,6 +71,7 @@
             <?php if( isset($message['success']) ): ?>
             <span><?php echo $message['success']; ?></span>
             <?php endif; ?>
+            <?php echo'<a href="http://localhost/AdvPhpSpring2016/week3/Login.php">Login</a>'; ?>
             <p>Email:</p>
             <input type="text" name="email"><br>
             <p>Password:</p>

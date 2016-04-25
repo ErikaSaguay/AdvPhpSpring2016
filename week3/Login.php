@@ -15,7 +15,7 @@
 
             $email = $values['email'];
             $pwd = $values['password'];
-            $pass = password_hash($pwd, PASSWORD_DEFAULT);
+
             
             $error = [];
             $message = [];
@@ -30,7 +30,7 @@
                 }
                 else{
                     
-                    if(($log->check($values, $pass))=== true){
+                    if(($log->check($email, $pwd))=== true){
                       // send to admin page using util
                         session_start();
                         $_SESSION['email']=$email;
