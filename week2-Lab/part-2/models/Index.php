@@ -18,8 +18,13 @@
         </style>
     </head>
     <body>
-     <body>
+     
          <a href="http://localhost/AdvPhpSpring2016/week1/AddNew.php">Add New User</a>
+         <?php include './autoload.php' ;
+            $class = "AddNew";
+            var_dump(load_lib($class)); 
+         ?>
+          
          <h1>Results</h1>
              
     <?php

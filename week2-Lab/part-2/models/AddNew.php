@@ -56,10 +56,10 @@
                $error['zipregex'] = 'Zip is Invalid';
            }
            if(count($error)==0){
-              $add->addPerson($values); 
-              if($add.equals(false)){
-                  $message['added']='was added';
-              }
+              if($add->addPerson($values) == true){
+                 $message["success"] = "Sucess, Please login";
+              } 
+
            }
         
         }
@@ -135,7 +135,7 @@
         ?>
 
 
-        <a id="link" href="http://localhost/AdvPhpSpring2016/week1/Index.php">Return</a>
+        
         <p><span class="error">* required field.</span></p>
         <?php  echo $message['success']; ?>
         <form id="myform" action="#" method="post">
