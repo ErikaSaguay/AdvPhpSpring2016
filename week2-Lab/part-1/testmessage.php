@@ -13,7 +13,7 @@ and open the template in the editor.
         <?php
        
         include './autoload.php';
-        $messages=new Message();
+        $messages=new SuccessMessage();
         $messages->addMessage("email", "erika@gmail.com");
         $messages->addMessage("phone", "123456789");
         

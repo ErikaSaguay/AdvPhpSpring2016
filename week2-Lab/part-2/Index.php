@@ -19,11 +19,8 @@
     </head>
     <body>
      
-         <a href="http://localhost/AdvPhpSpring2016/week1/AddNew.php">Add New User</a>
-         <?php include './autoload.php' ;
-            $class = "AddNew";
-            var_dump(load_lib($class)); 
-         ?>
+         <a href="http://localhost/AdvPhpSpring2016/week2-Lab/part-2/AddNew.php">Add New User</a>
+ 
           
          <h1>Results</h1>
              
