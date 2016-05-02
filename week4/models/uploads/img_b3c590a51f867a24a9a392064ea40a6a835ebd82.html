@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<html>
+<head> 
+	<title>
+		</title>
+	<style>
+		@-moz-keyframes blink {
+			from { color: red    }
+			to   { color: yellow }
+		}
+		@-webkit-keyframes blink {
+			from { color: red    }
+			to   { color: yellow }
+		}
+		.blinker {
+			-webkit-animation-direction: alternate;
+			-webkit-animation-duration: 3s;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-name: blink;
+			-moz-animation: alternate 3s infinite blink;
+		}
+	</style>
+
+</head>
+<script type="text/javascript">
+
+</script>
+<body>
+<h1 class="blinker">I'm not annoying you, am I?</h1>
+<img class="blinker" src="https://pixabay.com/static/uploads/photo/2014/04/02/17/06/fairy-lights-307950_960_720.png">
+</body> 
+</html>
