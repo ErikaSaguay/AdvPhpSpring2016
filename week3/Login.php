@@ -25,17 +25,22 @@
                 if(empty($email)){
                     $error['email'] = "Email is required";
                 }
-                else if(empty($pwd)){
+                if(empty($pwd)){
                     $error['pass'] = "Please enter password";
                 }
-                else{
+                if(count($error) == 0 ) {
                     
                     if(($log->check($email, $pwd))=== true){
                       // send to admin page using util
+                      if($log->get_user_id($values) != false){ //checkin if userid matches email 
+                        $userid = $log->get_user_id($values); // setting the useid from the database to the a variable named userid
                         session_start();
-                        $_SESSION['email']=$email;
-                        $page='http://localhost/AdvPhpSpring2016/week3/AdminPage.php';
+                        $_SESSION['userid'] = $userid;// setting user id session
+                        $_SESSION['email'] = $email;
+                        $page='AdminPage.php';
                         $util->redirect($page);
+                      }
+
                     }  
                     else {
                         $error['invalid'] = "Incorrect email or password";
@@ -48,15 +53,7 @@
             ?>
     <body>
         <h3>Login</h3>
-            <?php if( isset($error['pass']) ): ?>
-            <span><?php echo $error['pass']; ?></span>
-            <?php endif; ?>
-            <?php if( isset($error['email']) ): ?>
-            <span><?php echo $error['email']; ?></span>
-            <?php endif; ?>
-            <?php if( isset($error['invalid']) ): ?>
-            <span><?php echo $error['invalid']; ?></span> 
-            <?php endif; ?>
+            <?php include './userTemp/errors.php';  ?>
             <?php if( isset($message['success']) ): ?>
             <span><?php echo $message['success']; ?></span>
             <?php endif; ?>
@@ -66,6 +63,7 @@
             <p>Password:</p>
             <input type="password" name="password"><br><br>
             <input type="submit" name="submit" value="Login" >
+            <a href ="Signup.php" >SignUp</a>
         </form> 
 
 

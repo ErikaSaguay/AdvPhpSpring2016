@@ -14,7 +14,7 @@
 class Functions extends DBase implements IFunctions1 {
     //put your code here
     function __construct() {
-        
+        // construct builds the information
         $this->setDns('mysql:host=localhost;port=3306;dbname=PHPAdvClassSpring2016');
         $this->setPassword('');
         $this->setUser('root');
@@ -39,18 +39,16 @@ class Functions extends DBase implements IFunctions1 {
         
         $db = $this->getDb();
         // password hash
-        $query = $db->prepare("SELECT password FROM users WHERE email = :email ");
+        $query = $db->prepare("SELECT user_id , password FROM users WHERE email = :email ");
         $binds = array(
             ":email" => $email   
         );
 
-        
         if($query->execute($binds) && $query->rowCount() > 0 ){
             $user = $query->fetch(PDO::FETCH_ASSOC);
             $users = $user['password'];
-            
+            $userid = $user['user_id'];
             return password_verify($pass, $users );
-
             
         }
         return false; 
@@ -62,9 +60,27 @@ class Functions extends DBase implements IFunctions1 {
             ":email" => $values['email']
         );
         if($query->execute($binds) && $query->rowCount() > 0 ){
-            return false;
+            return true;
         }
-        return true;    
+        return false;    
         
     }
+        function get_user_id($values){
+        
+        $db = $this->getDb();
+        // password hash
+        $query = $db->prepare("SELECT user_id , password FROM users WHERE email = :email ");
+        $binds = array(
+            ":email" => $values['email']  
+        );
+
+        if($query->execute($binds) && $query->rowCount() > 0 ){
+            $user = $query->fetch(PDO::FETCH_ASSOC);
+            $userid = $user['user_id'];
+            return $userid;
+            
+        }
+        return false; 
+    }
+    
 }

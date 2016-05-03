@@ -32,15 +32,15 @@
             if(empty($email)){
                 $error['email'] = "Email is required";
             }
-            else if(empty($pass)){
+            if(empty($pass)){
                 $error['pass'] = "Please enter password";
             }
-            else {
+            if(count($error) == 0 ) {
                 if ( !$validator->isEmailValid($values['email']) ) {
                     $error['emailRegex'] = 'email is invalid';    
                 }else {
-                    $add->unique($values);
-                if($add == false){
+                    
+                if($add->unique($values) === true ){
                     $error['exists'] = "already exists";
                 }else{
                     $add->create($values, $hash ,$created);
@@ -54,24 +54,14 @@
         }
         
         ?>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <h3>Sign Up</h3>
         <form action="#" method="post">
-            <?php if( isset($error['pass']) ): ?>
-            <span><?php echo $error['pass']; ?></span>
-            <?php endif; ?>
-            <?php if( isset($error['email']) ): ?>
-            <span><?php echo $error['email']; ?></span>
-            <?php endif; ?>
-            <?php if( isset($error['emailRegex']) ): ?>
-            <span><?php echo $error['emailRegex']; ?></span>
-            <?php endif; ?>
-            <?php if( isset($error['exists']) ): ?>
-            <span><?php echo $error['exists']; ?></span> 
-            <?php endif; ?>
+            <?php include './userTemp/errors.php';  ?>
             <?php if( isset($message['success']) ): ?>
             <span><?php echo $message['success']; ?></span>
             <?php endif; ?>
-            <?php echo'<a href="http://localhost/AdvPhpSpring2016/week3/Login.php">Login</a>'; ?>
+            <?php echo'<a href="Login.php">Login</a>'; ?>
             <p>Email:</p>
             <input type="text" name="email"><br>
             <p>Password:</p>
@@ -80,7 +70,7 @@
             <input type="submit" name="submit" value="signup" >
         </form>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        
     </body>
     
     

@@ -14,6 +14,7 @@ interface IFunctions1 {
     //put your code here
     public function create( $values, $hash, $created );
     public function check( $values, $pass);
-    public function unique( $values );    
+    public function unique( $values );
+    public function get_user_id($values);
     
 }
