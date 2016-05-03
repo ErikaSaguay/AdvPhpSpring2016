@@ -13,6 +13,7 @@ and open the template in the editor.
         <?php
        
         include './autoload.php';
+        
         $messages=new SuccessMessage();
         $messages->addMessage("email", "erika@gmail.com");
         $messages->addMessage("phone", "123456789");
@@ -20,7 +21,6 @@ and open the template in the editor.
         var_dump($messages->getAllMessages());
         $messages->removeMessage("email");
         var_dump($messages->getAllMessages());
-        
         ?>
     </body>
 </html>

@@ -37,27 +37,34 @@
         if ( $util->isPostRequest() ) {
            if(empty($fullname)){
                $error['fullname'] = "Name is required";
-           }else if ( empty($email) ){
+           }
+           if ( empty($email) ){
                $error['email']  = "Email is required";
-           }else if ( empty($address) ){
+           }
+           if ( empty($address) ){
                $error['address'] = "Address is required";
-           }else if ( empty($city) ){
+           }
+           if ( empty($city) ){
                $error['city'] = "City is required";
-           }else if( empty($state) ){
+           }
+           if( empty($state) ){
                $error['state'] = "State required";
-           }else if(empty($zip)){
+           } if(empty($zip)){
                $error['zip']= "Zipcode Required";
-           }else if( empty($dob)){
+           } 
+           if( empty($dob)){
                $error['dob'] = "Date of birth required";
-           } else if ( !$validator->isEmailValid($values['email']) ) {
+           }  
+           if ( !$validator->isEmailValid($values['email']) ) {
                 $error['emailregex'] = 'Email is InValid';
             // validate email
-           }else if( !$validator->isZipValid($values['zip'])){
+           }
+           if( !$validator->isZipValid($values['zip'])){
                $error['zipregex'] = 'Zip is Invalid';
            }
            if(count($error)==0){
               if($add->addPerson($values) == true){
-                 $message["success"] = "Sucess, Please login";
+                 $message['success'] = "Sucess, Please login";
               } 
 
            }
@@ -135,30 +142,25 @@
         ?>
 
 
+        <?php include './user_temp/error.php';?>
         
-        <p><span class="error">* required field.</span></p>
-        <?php  echo $message['success']; ?>
+        <?php if( isset($message['success']) ): ?>
+        <p> <?php  echo $message['success']; ?> </p> 
+        <?php endif; ?>
+        
         <form id="myform" action="#" method="post">
             <p>Full Name</p>
             <input class="textboxes" name="fullname" type="text" value="<?php echo $fullname; ?>">
-            <?php if( isset($error['fullname']) ): ?>
-                <span class="error">* <?php echo $error['fullname']; ?></span>
-            <?php endif; ?>
+
             <p>Email</p>
             <input class="textboxes" name="email" type="text" value="<?php echo $email; ?>">
-             <?php if( isset($error['email']) ): ?>
-                <span class="error">* <?php echo $error['email']; ?></span>
-            <?php endif; ?>
+
             <p>Address</p>
             <input class="textboxes" name="address" type="text" value="<?php echo $address; ?>" >
-            <?php if( isset($error['address']) ): ?>
-            <span class="error">* <?php echo $error['address']; ?></span>
-            <?php endif;?>
+
             <p>City</p>
             <input class="textboxes" name="city" type="text" value="<?php echo $city; ?>" >
-            <?php if( isset($error['city']) ): ?>
-            <span class="error">* <?php echo $error['city']; ?></span>
-            <?php endif; ?>
+
             <p>State</p>
             <select class="textboxes" name="state" >
                <?php foreach ($us_state_abbrevs_names as $key => $value): ?>
@@ -170,14 +172,13 @@
                     ><?php echo $value; ?></option>
                 <?php endforeach; ?>
             </select>
-            <span class="error">* <?php echo $error['state']; ?></span>	
+
             <p>Zip</p>
             <input class="textboxes" name="zip" type="text" value="<?php echo $zip; ?>">
-            <span class="error">* <?php echo $error['zip']; ?></span>
-            <span class="error">* <?php echo $error['zipRegex']; ?></span>
+
             <p>BirthDay</p>
             <input class="textboxes" name="dob" type="date" value="<?php echo $dob; ?>">
-            <span class="error">* <?php echo $error[dob]; ?></span>
+            
             <br><br>
             <input id="button"  type="submit" name='submit' value="submit" >
             </script>

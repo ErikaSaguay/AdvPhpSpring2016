@@ -19,7 +19,7 @@
     </head>
     <body>
      
-         <a href="http://localhost/AdvPhpSpring2016/week2-Lab/part-2/AddNew.php">Add New User</a>
+         <a href="AddNew.php">Add New User</a>
  
           
          <h1>Results</h1>
