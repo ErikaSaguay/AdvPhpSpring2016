@@ -47,7 +47,7 @@ class Functions extends DBase implements IFunctions1 {
         if($query->execute($binds) && $query->rowCount() > 0 ){
             $user = $query->fetch(PDO::FETCH_ASSOC);
             $users = $user['password'];
-            $userid = $user['user_id'];
+            
             return password_verify($pass, $users );
             
         }
