@@ -102,17 +102,20 @@
                     });
                 }
             }        
-            var callBtn = document.querySelector('button');
+            var callBtn = document.querySelector('button'); //set a var to the button
             
             callBtn.addEventListener('click', function () {
-
+                //add event handler that will  do the following
                 var address = document.getElementById('address').value;
-                getLatitudeLongitude(showResult, address);                
+                //getting the location value
+                getLatitudeLongitude(showResult, address); 
+                //getting the latitude longitude 
                 var verbfield = document.querySelector('select[name="verb"]');
+                //getting the type 
                 var verb = verbfield.options[verbfield.selectedIndex].value;
-                
+                //verb is placed a array and its value 
                 var resource = document.querySelector('input[name="resource"]').value;
-
+                //getting the resource
                 
                 var data = {
                     'corp' : document.querySelector('input[name="corp"]').value,
@@ -121,15 +124,16 @@
                     'owner' : document.querySelector('input[name="owner"]').value,
                     'phone' : document.querySelector('input[name="phone"]').value,
                     'location':document.querySelector('input[name="local"]').value
-                };            
+                }; 
+                //settting the values in this case the data
                 var results = document.querySelector('textarea[name="results"]');
-
+                //setting variable results set to the textarea results
                 var xmlhttp = new XMLHttpRequest();
-
+                //XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server
                 var url = './api/v1/' + resource;
-
+               // setting the url to the resource
                 xmlhttp.open(verb, url, true);
-
+                //opening the verb value and sending the url and sending true
                 xmlhttp.onreadystatechange = function() {
                     if (xmlhttp.readyState === 4 ) {
 
@@ -142,9 +146,7 @@
                    
                 };
                 
-                //var username = 'test';
-               // xmlhttp.setRequestHeader("Authorization", "Basic " + btoa(username + "
-               // "));
+
 
                  if ( verb === 'GET' ) {
                       xmlhttp.send(null);
