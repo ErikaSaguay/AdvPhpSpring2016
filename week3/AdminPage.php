@@ -16,7 +16,7 @@
             
             $util = new Util();
             echo'welcome :'. $email.'<br>';
-            echo'<a href="http://localhost/AdvPhpSpring2016/week3/Signout.php">Signout</a>';
+            echo'<a href="Signout.php">Signout</a>';
          }
         
        
