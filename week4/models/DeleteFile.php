@@ -20,6 +20,6 @@ function Remove($path){
         
     </head>
     <body>
-        <a href="http://localhost/AdvPhpSpring2016/week4/models/DirectoryInterator.php">Return</a>  
+        <a href="DirectoryInterator.php">Return</a>  
     </body>
 </html>
