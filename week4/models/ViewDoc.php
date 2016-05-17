@@ -19,6 +19,11 @@
         $directory = new DirectoryIterator($folder); // pass the folder 
  
         $name = $_GET['id'];
+        try{
+        if(empty($name)){
+            throw new RuntimeException('File was not selected please CLICK Return.');
+ 
+        }
         
         $match = [];
         
@@ -51,7 +56,7 @@
                     <?php $match["txt"]="txt"; ?>
                  <?php endif;?>
                     
-                
+                <a href="DirectoryInterator.php">Return </a>
                 <?php if( $fileInfo->getExtension() == "pdf" ): ?>
                   <iframe width='1000' height='800' src='<?php echo $fileInfo->getPathname();  ?>' frameborder='0' allowfullscreen></iframe>
                   <?php $match["pdf"]="pdf"; ?>
@@ -69,10 +74,17 @@
                 <?php endif;?>
 
         <?php endforeach; ?>
-       
+       <?php  
+        }
+       catch (RuntimeException $e) {
 
- 
-        
+                 $message = $e->getMessage();
+                 echo  $message;
+                 
+        }?>
+
+         <a href="DirectoryInterator.php">Return</a>
+                
 
     </body>
 </html>

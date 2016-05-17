@@ -28,13 +28,14 @@
             <?php echo $fileInfo->getFilename();// name  ?> 
             <?php $fileName = $fileInfo->getFilename(); ?>
             <a id="<?php echo $fileName; ?>" href="ViewDoc.php?id=<?php echo $fileName; ?>" >view</a>
+            
            
 
         </li>
              <?php endif; ?>
           </ul>
         <?php endforeach; ?>
-        
+        <a href="uploadForm.php">Upload</a>
 
     </body>
 </html>
