@@ -28,7 +28,7 @@
         $match = [];
         
         ?>
-        
+        <a href="DirectoryInterator.php">Return </a>
         <?php foreach ($directory as $fileInfo) : ?>        
         
             <?php if($fileInfo->getFilename() == $name): ?>
@@ -56,7 +56,7 @@
                     <?php $match["txt"]="txt"; ?>
                  <?php endif;?>
                     
-                <a href="DirectoryInterator.php">Return </a>
+                
                 <?php if( $fileInfo->getExtension() == "pdf" ): ?>
                   <iframe width='1000' height='800' src='<?php echo $fileInfo->getPathname();  ?>' frameborder='0' allowfullscreen></iframe>
                   <?php $match["pdf"]="pdf"; ?>
@@ -77,13 +77,13 @@
        <?php  
         }
        catch (RuntimeException $e) {
-
-                 $message = $e->getMessage();
-                 echo  $message;
+        echo '<a href="DirectoryInterator.php">Return</a><br>';
+                echo $message = $e->getMessage();
+                 
                  
         }?>
 
-         <a href="DirectoryInterator.php">Return</a>
+         
                 
 
     </body>

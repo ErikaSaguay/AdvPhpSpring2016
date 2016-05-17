@@ -50,8 +50,10 @@
             if (!move_uploaded_file($_FILES['file']['tmp_name'], $location)) {
                 throw new RuntimeException('Failed to move uploaded file.');
             }
-
+            
+            echo '<a href="DirectoryInterator.php">Return</a><br>';
             echo 'File was uploaded';
+            
         } catch (RuntimeException $e) {
 
             echo $e->getMessage();
