@@ -33,7 +33,7 @@
             <li><a href="Signout.php">Logout</a></li>
             </ul>
         </nav>
-        
+        <?php include './autoload.php';?>
        <?php include './userTemp/AccessRestriction.php'; ?>
         <p hidden="true">UserID = <?php echo $_SESSION['userid'];?></p>
             <input hidden="true" type="text" name="ID" value="<?php echo $_SESSION['userid'];?>" />
