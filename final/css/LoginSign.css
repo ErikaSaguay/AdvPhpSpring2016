@@ -1,0 +1,26 @@
+
+/* 
+    Created on : May 13, 2016, 7:59:31 PM
+    Author     : ErikaC
+*/
+body{
+   margin-top: 10%;
+   background-color: #4dc3ff;
+}
+h3{
+    position: relative;
+    left: 45%;
+    color: white;
+    font:Comic Sans MS; 
+    
+}
+form{
+    position: relative;
+    left:45%;
+  
+}
+.content{
+    background-color: #cceeff;
+    width:100%;
+   
+}
