@@ -35,7 +35,9 @@
         $directory = new DirectoryIterator($folder); // pass the folder 
          
         ?>
-                            
+          <?php if($photo->user_info($userid)==false):?>
+             <h1><?php echo " Sorry no photos"; ?></h1>
+          <?php endif; ?>                    
         <?php foreach ($directory as $fileInfo) : ?>  
         
          
@@ -43,9 +45,7 @@
            
                    
 
-                     <?php if($photo->user_info($userid)==false):?>
-                        <h1><?php echo " Sorry no photos"; ?></h1>
-                     <?php endif; ?>   
+    
                     
                      <?php if($photo->user_info($userid) != false):?> 
                            <?php CheckFile($fileInfo->getFilename(),$userid) ?>
