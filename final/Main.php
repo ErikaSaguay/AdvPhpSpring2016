@@ -37,24 +37,18 @@
         ?>
           <?php if($photo->user_info($userid)==false):?>
              <h1><?php echo " Sorry no photos"; ?></h1>
-          <?php endif; ?>                    
+          <?php endif; ?> <?php if($photo->user_info($userid) != false):?>                     
         <?php foreach ($directory as $fileInfo) : ?>  
         
          
               <?php if ( $fileInfo->isFile() ) : ?> 
            
-                   
-
-    
                     
-                     <?php if($photo->user_info($userid) != false):?> 
-                           <?php CheckFile($fileInfo->getFilename(),$userid) ?>
-                        <?php endif; ?>
-                     
+               <?php CheckFile($fileInfo->getFilename(),$userid) ?>
 
-                    <?php endif; ?>
+              <?php endif; ?>
         <?php endforeach; ?> 
-      
+            <?php endif; ?>
         </section>
            
             <footer><p>&copy; Erika Guaman Saguay Copyright 2016 </p></footer>
